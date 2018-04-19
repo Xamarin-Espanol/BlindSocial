@@ -24,9 +24,6 @@ namespace BlindSocial.Helpers
         private const string baseApiUrlKey = "baseApiUrlKey";
         private static readonly string baseApiUrlDefault = "";
 
-        private const string translateApiUrlKey = "translateApiUrlKey";
-        private static readonly string translateApiUrlDefault = "";
-
         #endregion
 
 

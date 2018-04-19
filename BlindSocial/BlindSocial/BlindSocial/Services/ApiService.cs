@@ -41,19 +41,18 @@ namespace BlindSocial.Services
             return httpClient;
         }
 
-        public async Task<RootObject> Analize(string url)
+        public async Task<string> Analize(string url)
         {
             try
             {
                 // Get the response from the server url and REST path for the data  
-                var response = await m_HttpClient.PostAsync(new Uri(baseAddress + "?url=" + url),
-                    new StringContent("", Encoding.UTF8, "application/json"));
+                var response = await m_HttpClient.GetAsync(new Uri(baseAddress + "?imageUrl=" + url));
 
                 if (response.StatusCode == HttpStatusCode.Unauthorized)
                     throw new UnauthorizedAccessException("Access Denied");
 
                 if (response.IsSuccessStatusCode)
-                    return JsonConvert.DeserializeObject<RootObject>(await response.Content.ReadAsStringAsync());
+                    return JsonConvert.DeserializeObject<string>(await response.Content.ReadAsStringAsync());
 
                 throw new WebException(response.ReasonPhrase);
             }

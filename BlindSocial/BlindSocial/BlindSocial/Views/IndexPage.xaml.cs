@@ -18,7 +18,7 @@ namespace BlindSocial.Views
             NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
 
-            apiService = new ApiService("api/BlindSocial", string.Empty);
+            apiService = new ApiService("api/Analyzer/AnalyzeUrl/", string.Empty);
         }
 
         async void OnTapGestureRecognizerTapped(object sender, EventArgs args)
@@ -48,21 +48,7 @@ namespace BlindSocial.Views
             var blobStorage = DependencyService.Get<IBlobStorage>();
             var url = await blobStorage.PerformBlobOperation(file.GetStream());
 
-            var rootObject = await apiService.Analize(url);
-            var text = string.Empty;
-
-            if (rootObject.Description.Captions.Any())
-            {
-                text += "En la imagen puedo reconocer lo siguiente: \n";
-
-                var englishText = string.Empty;
-                foreach (var caption in rootObject.Description.Captions)
-                {
-                    englishText += caption.Text;
-                }
-
-                text += englishText;
-            }
+            var text = $"En la imagen puedo reconocer lo siguiente: \n { await apiService.Analize(url) }";
 
             await Navigation.PushModalAsync(new SpeakPage(text));
         }
