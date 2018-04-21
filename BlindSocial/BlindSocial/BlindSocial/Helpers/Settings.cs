@@ -22,7 +22,7 @@ namespace BlindSocial.Helpers
 		#region Setting Constants
 
         private const string baseApiUrlKey = "baseApiUrlKey";
-        private static readonly string baseApiUrlDefault = "";
+        private static readonly string baseApiUrlDefault = "https://blindsocial.azurewebsites.net/";
 
         #endregion
 
@@ -47,6 +47,7 @@ namespace BlindSocial.Helpers
             }
         }
 
+        /*
         public static string TranslateAPIUrl
         {
             get
@@ -54,5 +55,6 @@ namespace BlindSocial.Helpers
                 return AppSettings.GetValueOrDefault(translateApiUrlKey, translateApiUrlDefault);
             }
         }
+        */
     }
 }

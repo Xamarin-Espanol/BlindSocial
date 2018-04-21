@@ -63,7 +63,7 @@ namespace BlindSocial.Services
             }
         }
 
-
+        /*
         public async Task<string> Translate(string text)
         {
             try
@@ -86,5 +86,6 @@ namespace BlindSocial.Services
                 throw ex;
             }
         }
+        */
     }
 }

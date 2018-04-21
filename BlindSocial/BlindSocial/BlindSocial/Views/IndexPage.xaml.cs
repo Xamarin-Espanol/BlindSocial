@@ -41,7 +41,7 @@ namespace BlindSocial.Views
 
             var languages = await CrossTextToSpeech.Current.GetInstalledLanguages();
 
-            var selectedLanguage = languages.Where(x => x.Language == "es" && x.Country == "ES").FirstOrDefault();
+            var selectedLanguage = languages.Where(x => x.Language.Contains("es")).FirstOrDefault();
 
             await CrossTextToSpeech.Current.Speak("Se esta procesando la imagen, aguarde por favor", selectedLanguage);
             
